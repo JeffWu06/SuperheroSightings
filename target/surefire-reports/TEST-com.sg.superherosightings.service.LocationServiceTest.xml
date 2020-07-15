@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="17" failures="0" name="com.sg.superherosightings.service.LocationServiceTest" time="2.875" errors="0" skipped="0">
+<testsuite tests="14" failures="0" name="com.sg.superherosightings.service.LocationServiceTest" time="0.001" errors="0" skipped="0">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk1.8.0_111\jre\bin"/>
     <property name="java.vm.version" value="25.111-b14"/>
     <property name="java.vm.vendor" value="Oracle Corporation"/>
-    <property name="maven.multiModuleProjectDirectory" value="C:\Users\Jeff\Documents\Repos\online-java-2019-JeffWu06\Summatives\SuperHeroSightings"/>
+    <property name="maven.multiModuleProjectDirectory" value="C:\Users\Jeff\Documents\Repos\SuperHeroSightings"/>
     <property name="java.vendor.url" value="http://java.oracle.com/"/>
     <property name="path.separator" value=";"/>
     <property name="guice.disable.misplaced.annotation.check" value="true"/>
@@ -16,7 +16,7 @@
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="sun.os.patch.level" value=""/>
     <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
-    <property name="user.dir" value="C:\Users\Jeff\Documents\Repos\online-java-2019-JeffWu06\Summatives\SuperHeroSightings"/>
+    <property name="user.dir" value="C:\Users\Jeff\Documents\Repos\SuperHeroSightings"/>
     <property name="java.runtime.version" value="1.8.0_111-b14"/>
     <property name="java.awt.graphicsenv" value="sun.awt.Win32GraphicsEnvironment"/>
     <property name="java.endorsed.dirs" value="C:\Program Files\Java\jdk1.8.0_111\jre\lib\endorsed"/>
@@ -64,21 +64,18 @@
     <property name="sun.desktop" value="windows"/>
     <property name="sun.cpu.isalist" value="amd64"/>
   </properties>
-  <testcase classname="com.sg.superherosightings.service.LocationServiceTest" name="testAddGetValidLocation" time="0.119"/>
-  <testcase classname="com.sg.superherosightings.service.LocationServiceTest" name="testDeleteLocation" time="0.109"/>
-  <testcase classname="com.sg.superherosightings.service.LocationServiceTest" name="testUpdateLocationNullData" time="0.116"/>
-  <testcase classname="com.sg.superherosightings.service.LocationServiceTest" name="testAddGetLocationBadStreet" time="0.142"/>
-  <testcase classname="com.sg.superherosightings.service.LocationServiceTest" name="testAddGetLocationBadDesc" time="0.1"/>
-  <testcase classname="com.sg.superherosightings.service.LocationServiceTest" name="testAddGetLocationBadName" time="0.091"/>
-  <testcase classname="com.sg.superherosightings.service.LocationServiceTest" name="testAddGetLocationBadCoordinates" time="0.09"/>
-  <testcase classname="com.sg.superherosightings.service.LocationServiceTest" name="testUpdateLocationBadStreet" time="0.127"/>
-  <testcase classname="com.sg.superherosightings.service.LocationServiceTest" name="testAddGetLocationNullData" time="0.139"/>
-  <testcase classname="com.sg.superherosightings.service.LocationServiceTest" name="testUpdateGetValidLocation" time="0.172"/>
-  <testcase classname="com.sg.superherosightings.service.LocationServiceTest" name="testGetLocationBySightingId" time="0.523"/>
-  <testcase classname="com.sg.superherosightings.service.LocationServiceTest" name="testGetLocationByOrganizationId" time="0.231"/>
-  <testcase classname="com.sg.superherosightings.service.LocationServiceTest" name="testGetLocationsBySuperhumanId" time="0.16"/>
-  <testcase classname="com.sg.superherosightings.service.LocationServiceTest" name="testUpdateLocationBadDesc" time="0.206"/>
-  <testcase classname="com.sg.superherosightings.service.LocationServiceTest" name="testUpdateLocationBadName" time="0.204"/>
-  <testcase classname="com.sg.superherosightings.service.LocationServiceTest" name="testUpdateLocationBadCoordinates" time="0.176"/>
-  <testcase classname="com.sg.superherosightings.service.LocationServiceTest" name="testGetAllLocations" time="0.17"/>
+  <testcase classname="com.sg.superherosightings.service.LocationServiceTest" name="testAddGetValidLocation" time="0"/>
+  <testcase classname="com.sg.superherosightings.service.LocationServiceTest" name="testDeleteLocation" time="0"/>
+  <testcase classname="com.sg.superherosightings.service.LocationServiceTest" name="testUpdateLocationNullData" time="0.001"/>
+  <testcase classname="com.sg.superherosightings.service.LocationServiceTest" name="testAddGetLocationBadStreet" time="0"/>
+  <testcase classname="com.sg.superherosightings.service.LocationServiceTest" name="testAddGetLocationBadDesc" time="0"/>
+  <testcase classname="com.sg.superherosightings.service.LocationServiceTest" name="testAddGetLocationBadName" time="0"/>
+  <testcase classname="com.sg.superherosightings.service.LocationServiceTest" name="testAddGetLocationBadCoordinates" time="0"/>
+  <testcase classname="com.sg.superherosightings.service.LocationServiceTest" name="testUpdateLocationBadStreet" time="0"/>
+  <testcase classname="com.sg.superherosightings.service.LocationServiceTest" name="testAddGetLocationNullData" time="0"/>
+  <testcase classname="com.sg.superherosightings.service.LocationServiceTest" name="testUpdateGetValidLocation" time="0"/>
+  <testcase classname="com.sg.superherosightings.service.LocationServiceTest" name="testUpdateLocationBadDesc" time="0"/>
+  <testcase classname="com.sg.superherosightings.service.LocationServiceTest" name="testUpdateLocationBadName" time="0"/>
+  <testcase classname="com.sg.superherosightings.service.LocationServiceTest" name="testUpdateLocationBadCoordinates" time="0"/>
+  <testcase classname="com.sg.superherosightings.service.LocationServiceTest" name="testGetAllLocations" time="0"/>
 </testsuite>

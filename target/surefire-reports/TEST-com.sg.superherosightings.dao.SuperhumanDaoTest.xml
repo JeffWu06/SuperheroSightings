@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="6" failures="0" name="com.sg.superherosightings.dao.SuperhumanDaoTest" time="1.049" errors="0" skipped="0">
+<testsuite tests="8" failures="0" name="com.sg.superherosightings.dao.SuperhumanDaoTest" time="0.612" errors="0" skipped="0">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk1.8.0_111\jre\bin"/>
     <property name="java.vm.version" value="25.111-b14"/>
     <property name="java.vm.vendor" value="Oracle Corporation"/>
-    <property name="maven.multiModuleProjectDirectory" value="C:\Users\Jeff\Documents\Repos\online-java-2019-JeffWu06\Summatives\SuperHeroSightings"/>
+    <property name="maven.multiModuleProjectDirectory" value="C:\Users\Jeff\Documents\Repos\SuperHeroSightings"/>
     <property name="java.vendor.url" value="http://java.oracle.com/"/>
     <property name="path.separator" value=";"/>
     <property name="guice.disable.misplaced.annotation.check" value="true"/>
@@ -16,7 +16,7 @@
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="sun.os.patch.level" value=""/>
     <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
-    <property name="user.dir" value="C:\Users\Jeff\Documents\Repos\online-java-2019-JeffWu06\Summatives\SuperHeroSightings"/>
+    <property name="user.dir" value="C:\Users\Jeff\Documents\Repos\SuperHeroSightings"/>
     <property name="java.runtime.version" value="1.8.0_111-b14"/>
     <property name="java.awt.graphicsenv" value="sun.awt.Win32GraphicsEnvironment"/>
     <property name="java.endorsed.dirs" value="C:\Program Files\Java\jdk1.8.0_111\jre\lib\endorsed"/>
@@ -64,10 +64,12 @@
     <property name="sun.desktop" value="windows"/>
     <property name="sun.cpu.isalist" value="amd64"/>
   </properties>
-  <testcase classname="com.sg.superherosightings.dao.SuperhumanDaoTest" name="testAddGetSuperhumanById" time="0.182"/>
-  <testcase classname="com.sg.superherosightings.dao.SuperhumanDaoTest" name="testGetSuperhumansByLocationId" time="0.109"/>
-  <testcase classname="com.sg.superherosightings.dao.SuperhumanDaoTest" name="testGetAllSuperhumans" time="0.171"/>
-  <testcase classname="com.sg.superherosightings.dao.SuperhumanDaoTest" name="testDeleteSuperhuman" time="0.175"/>
-  <testcase classname="com.sg.superherosightings.dao.SuperhumanDaoTest" name="testUpdateSuperhuman" time="0.242"/>
-  <testcase classname="com.sg.superherosightings.dao.SuperhumanDaoTest" name="testGetSuperhumansByOrganization" time="0.17"/>
+  <testcase classname="com.sg.superherosightings.dao.SuperhumanDaoTest" name="testAddGetSuperhumanById" time="0.034"/>
+  <testcase classname="com.sg.superherosightings.dao.SuperhumanDaoTest" name="testGetSuperhumansByLocationId" time="0.048"/>
+  <testcase classname="com.sg.superherosightings.dao.SuperhumanDaoTest" name="testGetAllSuperhumans" time="0.095"/>
+  <testcase classname="com.sg.superherosightings.dao.SuperhumanDaoTest" name="testDeleteSuperhuman" time="0.152"/>
+  <testcase classname="com.sg.superherosightings.dao.SuperhumanDaoTest" name="testGetSuperhumanBySightingId" time="0.058"/>
+  <testcase classname="com.sg.superherosightings.dao.SuperhumanDaoTest" name="testUpdateSuperhuman" time="0.068"/>
+  <testcase classname="com.sg.superherosightings.dao.SuperhumanDaoTest" name="testGetSuperhumanIdsUsingPower" time="0.061"/>
+  <testcase classname="com.sg.superherosightings.dao.SuperhumanDaoTest" name="testGetSuperhumansByOrganization" time="0.096"/>
 </testsuite>

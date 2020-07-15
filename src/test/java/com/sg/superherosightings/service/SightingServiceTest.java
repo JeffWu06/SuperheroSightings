@@ -43,6 +43,12 @@ public class SightingServiceTest {
     Superpower testPower = new Superpower();
     
     public SightingServiceTest() {
+        ApplicationContext ctx = new ClassPathXmlApplicationContext("test-applicationContext.xml");
+        heroService = ctx.getBean("superhumanService", SuperhumanService.class);
+        powerService = ctx.getBean("superpowerService", SuperpowerService.class);
+        locService = ctx.getBean("locationService", LocationService.class);
+        orgService = ctx.getBean("organizationService", OrganizationService.class);
+        service = ctx.getBean("sightingService", SightingService.class);
     }
     
     @BeforeClass
@@ -55,13 +61,6 @@ public class SightingServiceTest {
     
     @Before
     public void setUp() {
-        ApplicationContext ctx = new ClassPathXmlApplicationContext("test-applicationContext.xml");
-        heroService = ctx.getBean("superhumanService", SuperhumanService.class);
-        powerService = ctx.getBean("superpowerService", SuperpowerService.class);
-        locService = ctx.getBean("locationService", LocationService.class);
-        orgService = ctx.getBean("organizationService", OrganizationService.class);
-        service = ctx.getBean("sightingService", SightingService.class);
-
         List<Organization> orgs = orgService.getAllOrganizations();
         for (Organization org : orgs) {
             orgService.deleteOrganization(org.getOrganizationId());

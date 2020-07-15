@@ -6,7 +6,9 @@
 package com.sg.superherosightings.service;
 
 import com.sg.superherosightings.dao.SuperhumanDao;
+import com.sg.superherosightings.model.Organization;
 import com.sg.superherosightings.model.Superhuman;
+import com.sg.superherosightings.model.Superpower;
 import java.util.List;
 
 /**
@@ -96,7 +98,11 @@ public class SuperhumanServiceImpl implements SuperhumanService {
     private void checkSuperpowerList(Superhuman superhuman) 
             throws SuperhumanInvalidDataException {
         try {
-            superhuman.getSuperpowers();
+            List<Superpower> powers = superhuman.getSuperpowers();
+            if (powers == null) {
+                throw new SuperhumanInvalidDataException(
+                        "Must provide list of Superpowers.");
+            }
         } catch (NullPointerException e) {
             throw new SuperhumanInvalidDataException(
                     "Must provide list of Superpowers.");
@@ -106,7 +112,11 @@ public class SuperhumanServiceImpl implements SuperhumanService {
     private void checkOrganizationList(Superhuman superhuman) 
             throws SuperhumanInvalidDataException {
         try {
-            superhuman.getOrganizations();
+            List<Organization> orgs = superhuman.getOrganizations();
+            if (orgs == null) {
+                throw new SuperhumanInvalidDataException(
+                        "Must provide list of Organizations.");
+            }
         } catch (NullPointerException e) {
             throw new SuperhumanInvalidDataException(
                     "Must provide list of Organizations.");

@@ -9,14 +9,13 @@ import com.sg.superherosightings.model.Location;
 import com.sg.superherosightings.model.Organization;
 import com.sg.superherosightings.model.Superhuman;
 import com.sg.superherosightings.model.Superpower;
-import com.sg.superherosightings.service.SuperhumanService;
-import com.sg.superherosightings.service.SuperpowerService;
 import java.math.BigDecimal;
 import java.util.List;
 import org.junit.After;
 import org.junit.AfterClass;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 import org.junit.Before;
 import org.junit.BeforeClass;
@@ -32,12 +31,17 @@ public class OrganizationDaoTest {
     
     OrganizationDao orgDao;
     LocationDao locDao;
-    SuperhumanService heroService;
-    SuperpowerService powerService;
+    SuperhumanDao heroDao;
+    SuperpowerDao powerDao;
     Organization testOrg = new Organization();
     Location testLoc = new Location();
     
     public OrganizationDaoTest() {
+        ApplicationContext ctx = new ClassPathXmlApplicationContext("test-applicationContext.xml");
+        orgDao = ctx.getBean("organizationDao", OrganizationDao.class);
+        locDao = ctx.getBean("locationDao", LocationDao.class);
+        heroDao = ctx.getBean("superhumanDao", SuperhumanDao.class);
+        powerDao = ctx.getBean("superpowerDao", SuperpowerDao.class);
     }
     
     @BeforeClass
@@ -50,12 +54,6 @@ public class OrganizationDaoTest {
     
     @Before
     public void setUp() {
-        ApplicationContext ctx = new ClassPathXmlApplicationContext("test-applicationContext.xml");
-        orgDao = ctx.getBean("organizationDao", OrganizationDao.class);
-        locDao = ctx.getBean("locationDao", LocationDao.class);
-        heroService = ctx.getBean("superhumanService", SuperhumanService.class);
-        powerService = ctx.getBean("superpowerService", SuperpowerService.class);
-        
         List<Organization> orgs = orgDao.getAllOrganizations();
         for (Organization org : orgs) {
             orgDao.deleteOrganization(org.getOrganizationId());
@@ -66,14 +64,14 @@ public class OrganizationDaoTest {
             locDao.deleteLocation(loc.getLocationId());
         }
         
-        List<Superpower> superpowers = powerService.getAllSuperpowers();
+        List<Superpower> superpowers = powerDao.getAllSuperpowers();
         for (Superpower currentPower : superpowers) {
-            powerService.deleteSuperpower(currentPower.getSuperpowerId());
+            powerDao.deleteSuperpower(currentPower.getSuperpowerId());
         }
         
-        List<Superhuman> heroes = heroService.getAllSuperhumans();
+        List<Superhuman> heroes = heroDao.getAllSuperhumans();
         for (Superhuman hero : heroes) {
-            heroService.deleteSuperhuman(hero.getSuperhumanId());
+            heroDao.deleteSuperhuman(hero.getSuperhumanId());
         }
         
         testLoc.setLocationName("Test Place");
@@ -105,14 +103,14 @@ public class OrganizationDaoTest {
             locDao.deleteLocation(loc.getLocationId());
         }
         
-        List<Superpower> superpowers = powerService.getAllSuperpowers();
+        List<Superpower> superpowers = powerDao.getAllSuperpowers();
         for (Superpower currentPower : superpowers) {
-            powerService.deleteSuperpower(currentPower.getSuperpowerId());
+            powerDao.deleteSuperpower(currentPower.getSuperpowerId());
         }
         
-        List<Superhuman> heroes = heroService.getAllSuperhumans();
+        List<Superhuman> heroes = heroDao.getAllSuperhumans();
         for (Superhuman hero : heroes) {
-            heroService.deleteSuperhuman(hero.getSuperhumanId());
+            heroDao.deleteSuperhuman(hero.getSuperhumanId());
         }
     }
 
@@ -226,21 +224,37 @@ public class OrganizationDaoTest {
     public void testGetOrganizationsBySuperhumanId() throws Exception {
         Superpower testPower = new Superpower();
         testPower.setSuperpowerDescription("Super coding power");
-        powerService.addSuperpower(testPower);
+        powerDao.addSuperpower(testPower);
         Superhuman testSuperhuman = new Superhuman();
         testSuperhuman.setAlterEgo("Supercoder");
         testSuperhuman.setDescription("World's most powerful coder.");
         testSuperhuman.setVillain(false);
-        testSuperhuman.setSuperpowers(powerService.getAllSuperpowers());
+        testSuperhuman.setSuperpowers(powerDao.getAllSuperpowers());
         locDao.addLocation(testLoc);
         testOrg.setLocation(testLoc);
         orgDao.addOrganization(testOrg);
         testSuperhuman.setOrganizations(orgDao.getAllOrganizations());   
 
-        heroService.addSuperhuman(testSuperhuman);
+        heroDao.addSuperhuman(testSuperhuman);
         
         List<Organization> fromDao = orgDao.getOrganizationsBySuperhumanId(
                 testSuperhuman.getSuperhumanId());
         assertEquals(1, fromDao.size());
+    }
+
+    /**
+     * Test of getOrganizationsIdsAtLocation method.
+     */
+    @Test
+    public void testGetOrganizationsAtLocation() {
+        locDao.addLocation(testLoc);
+        testOrg.setLocation(testLoc);
+        orgDao.addOrganization(testOrg);        
+        Organization fromDao = orgDao.getOrganizationById(testOrg.getOrganizationId());        
+        assertEquals(fromDao.getOrganizationId(), testOrg.getOrganizationId());
+        assertEquals(fromDao.getOrganizationName(), testOrg.getOrganizationName()); 
+        
+        List<Organization> orgs = orgDao.getOrganizationIdsAtLocation(testLoc.getLocationId());
+        assertTrue(orgs.size() > 0);
     }
 }

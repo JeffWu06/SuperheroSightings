@@ -43,40 +43,50 @@
         <property name="jdbcTemplate" ref="jdbcTemplate"/>
     </bean>
     
+    <bean id="superpowerDaoStub" class="com.sg.superherosightings.dao.SuperpowerDaoStubImpl"/>
+    
     <bean id="superpowerService" class="com.sg.superherosightings.service.SuperpowerServiceImpl">
-        <constructor-arg ref="superpowerDao"/>
+        <constructor-arg ref="superpowerDaoStub"/>
     </bean>
     
     <bean id="locationDao" class="com.sg.superherosightings.dao.LocationDaoJdbcImpl">
         <property name="jdbcTemplate" ref="jdbcTemplate"/>
     </bean>
+    
+    <bean id="locationDaoStub" class="com.sg.superherosightings.dao.LocationDaoStubImpl"/>
 
     <bean id="locationService" class="com.sg.superherosightings.service.LocationServiceImpl">
-        <constructor-arg ref="locationDao"/>
+        <constructor-arg ref="locationDaoStub"/>
     </bean>
     
     <bean id="organizationDao" class="com.sg.superherosightings.dao.OrganizationDaoJdbcImpl">
         <property name="jdbcTemplate" ref="jdbcTemplate"/>
     </bean>
     
-    <bean id="organizationService" class="com.sg.superherosightings.service.OrganizationServiceImpl">
-        <constructor-arg ref="organizationDao"/>
-    </bean>
+    <bean id="organizationDaoStub" class="com.sg.superherosightings.dao.OrganizationDaoStubImpl"/>
     
-    <bean id="superhumanService" class="com.sg.superherosightings.service.SuperhumanServiceImpl">
-        <constructor-arg ref="superhumanDao"/>
+    <bean id="organizationService" class="com.sg.superherosightings.service.OrganizationServiceImpl">
+        <constructor-arg ref="organizationDaoStub"/>
     </bean>
     
     <bean id="superhumanDao" class="com.sg.superherosightings.dao.SuperhumanDaoJdbcImpl">
         <property name="jdbcTemplate" ref="jdbcTemplate"/>
     </bean>
     
+    <bean id="superhumanDaoStub" class="com.sg.superherosightings.dao.SuperhumanDaoStubImpl"/>
+    
+    <bean id="superhumanService" class="com.sg.superherosightings.service.SuperhumanServiceImpl">
+        <constructor-arg ref="superhumanDaoStub"/>
+    </bean>
+    
     <bean id="sightingDao" class="com.sg.superherosightings.dao.SightingDaoJdbcImpl">
         <property name="jdbcTemplate" ref="jdbcTemplate"/>
-    </bean>    
+    </bean>
+    
+    <bean id="sightingDaoStub" class="com.sg.superherosightings.dao.SightingDaoStubImpl"/>
     
     <bean id="sightingService" class="com.sg.superherosightings.service.SightingServiceImpl">
-        <constructor-arg ref="sightingDao"/>
+        <constructor-arg ref="sightingDaoStub"/>
     </bean>
 
     <bean id="superHeroSightingService" class="com.sg.superherosightings.service.SuperHeroSightingsServiceImpl">

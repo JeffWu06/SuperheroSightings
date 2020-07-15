@@ -25,6 +25,8 @@ public class SuperpowerDaoTest {
     Superpower testPower = new Superpower();
     
     public SuperpowerDaoTest() {
+        ApplicationContext ctx = new ClassPathXmlApplicationContext("test-applicationContext.xml");
+        dao = ctx.getBean("superpowerDao", SuperpowerDao.class);
     }
     
     @BeforeClass
@@ -37,9 +39,6 @@ public class SuperpowerDaoTest {
     
     @Before
     public void setUp() {
-        ApplicationContext ctx = new ClassPathXmlApplicationContext("test-applicationContext.xml");
-        dao = ctx.getBean("superpowerDao", SuperpowerDao.class);
-        
         /* Delete all existing Superpower database rows, if any, and initialize
         values for the testPower. */
         List<Superpower> superpowers = dao.getAllSuperpowers();
@@ -58,8 +57,6 @@ public class SuperpowerDaoTest {
      */
     @Test
     public void testAddGetSuperpower() {
-//        Superpower testPower = new Superpower();
-//        testPower.setSuperpowerDescription("Super unit testing");
         dao.addSuperpower(testPower);
         
         Superpower fromDao = dao.getSuperpowerById(testPower.getSuperpowerId());
@@ -71,8 +68,6 @@ public class SuperpowerDaoTest {
      */
     @Test
     public void testDeleteSuperpower() {
-//        Superpower testPower = new Superpower();
-//        testPower.setSuperpowerDescription("Super unit testing");
         dao.addSuperpower(testPower);
         
         Superpower fromDao = dao.getSuperpowerById(testPower.getSuperpowerId());
@@ -87,8 +82,6 @@ public class SuperpowerDaoTest {
      */
     @Test
     public void testUpdateSuperpower() {
-//        Superpower testPower = new Superpower();
-//        testPower.setSuperpowerDescription("Super unit testing");
         dao.addSuperpower(testPower);
         
         Superpower fromDao = dao.getSuperpowerById(testPower.getSuperpowerId());

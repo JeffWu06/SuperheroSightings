@@ -43,6 +43,12 @@ public class SightingDaoTest {
     Superpower testPower = new Superpower();
     
     public SightingDaoTest() {
+        ApplicationContext ctx = new ClassPathXmlApplicationContext("test-applicationContext.xml");
+        heroDao = ctx.getBean("superhumanDao", SuperhumanDao.class);
+        powerDao = ctx.getBean("superpowerDao", SuperpowerDao.class);
+        locDao = ctx.getBean("locationDao", LocationDao.class);
+        orgDao = ctx.getBean("organizationDao", OrganizationDao.class);
+        dao = ctx.getBean("sightingDao", SightingDao.class);
     }
     
     @BeforeClass
@@ -55,13 +61,6 @@ public class SightingDaoTest {
     
     @Before
     public void setUp() {
-        ApplicationContext ctx = new ClassPathXmlApplicationContext("test-applicationContext.xml");
-        heroDao = ctx.getBean("superhumanDao", SuperhumanDao.class);
-        powerDao = ctx.getBean("superpowerDao", SuperpowerDao.class);
-        locDao = ctx.getBean("locationDao", LocationDao.class);
-        orgDao = ctx.getBean("organizationDao", OrganizationDao.class);
-        dao = ctx.getBean("sightingDao", SightingDao.class);
-        
         List<Organization> orgs = orgDao.getAllOrganizations();
         for (Organization org : orgs) {
             orgDao.deleteOrganization(org.getOrganizationId());
@@ -337,6 +336,75 @@ public class SightingDaoTest {
         
         List<Sighting> fromDao = dao.getRecentSightings();
         assertTrue(fromDao.size() <= 10);
+    }
+
+    /**
+     * Test of getSightingsByLocation method, of class SightingDao.
+     */
+    @Test
+    public void testGetSightingsByLocation() {
+        LocalDate testDate = LocalDate.of(2020,1,1);
         
-    }    
+        powerDao.addSuperpower(testPower);
+        List<Superpower> powers = new ArrayList<>();
+        powers.add(testPower);
+        testHero.setSuperpowers(powers);
+        locDao.addLocation(testLoc);
+        testOrg.setLocation(testLoc);
+        orgDao.addOrganization(testOrg);
+        List<Organization> orgs = new ArrayList<>();
+        orgs.add(testOrg);
+        testHero.setOrganizations(orgs);
+        heroDao.addSuperhuman(testHero);
+        List<Superhuman> heroes = new ArrayList<>();
+        heroes.add(testHero);
+        testSighting.setSightingDate(testDate);
+        testSighting.setLocation(testLoc);
+        testSighting.setHeroes(heroes);
+        dao.addSighting(testSighting);
+        
+        Sighting testSighting2 = new Sighting();
+        testSighting2.setSightingDate(testDate);
+        testSighting2.setLocation(testLoc);
+        testSighting2.setHeroes(heroes);        
+        dao.addSighting(testSighting2);
+        
+        List<Sighting> fromDao = dao.getSightingsByLocation(testLoc.getLocationId());
+        assertEquals(2, fromDao.size());
+    }
+
+    /**
+     * Test of getSightingsBySuperhuman method, of class SightingDao.
+     */
+    @Test
+    public void testGetSightingsBySuperhuman() {
+        LocalDate testDate = LocalDate.of(2020,1,1);
+        
+        powerDao.addSuperpower(testPower);
+        List<Superpower> powers = new ArrayList<>();
+        powers.add(testPower);
+        testHero.setSuperpowers(powers);
+        locDao.addLocation(testLoc);
+        testOrg.setLocation(testLoc);
+        orgDao.addOrganization(testOrg);
+        List<Organization> orgs = new ArrayList<>();
+        orgs.add(testOrg);
+        testHero.setOrganizations(orgs);
+        heroDao.addSuperhuman(testHero);
+        List<Superhuman> heroes = new ArrayList<>();
+        heroes.add(testHero);
+        testSighting.setSightingDate(testDate);
+        testSighting.setLocation(testLoc);
+        testSighting.setHeroes(heroes);
+        dao.addSighting(testSighting);
+        
+        Sighting testSighting2 = new Sighting();
+        testSighting2.setSightingDate(testDate);
+        testSighting2.setLocation(testLoc);
+        testSighting2.setHeroes(heroes);        
+        dao.addSighting(testSighting2);
+        
+        List<Sighting> fromDao = dao.getSightingsBySuperhuman(testHero.getSuperhumanId());
+        assertEquals(2, fromDao.size());
+    }
 }

@@ -7,8 +7,11 @@ package com.sg.superherosightings.dao;
 
 import com.sg.superherosightings.model.Location;
 import com.sg.superherosightings.model.Organization;
-import com.sg.superherosightings.service.OrganizationService;
+import com.sg.superherosightings.model.Sighting;
+import com.sg.superherosightings.model.Superhuman;
+import com.sg.superherosightings.model.Superpower;
 import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.util.List;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -26,16 +29,24 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
  */
 public class LocationDaoTest {
     LocationDao dao;
-    private OrganizationService orgService; 
+    OrganizationDao orgDao;
+    SuperpowerDao powerDao;
+    SuperhumanDao heroDao;
+    SightingDao sightingDao;
     Organization testOrg = new Organization();
     Location testLoc = new Location();
     /* When they are ready, instantiate Superhuman, and Sighting
     services so you can add sample Objects for each to make sure the 
     getLocationBy... methods work. See what Pat did in his PlayerDaoImplTest.
     */
-    ApplicationContext ctx = new ClassPathXmlApplicationContext("test-applicationContext.xml");
     
     public LocationDaoTest() {
+        ApplicationContext ctx = new ClassPathXmlApplicationContext("test-applicationContext.xml");
+        dao = ctx.getBean("locationDao", LocationDao.class);
+        orgDao = ctx.getBean("organizationDao", OrganizationDao.class);
+        powerDao = ctx.getBean("superpowerDao", SuperpowerDao.class);
+        heroDao = ctx.getBean("superhumanDao", SuperhumanDao.class);
+        sightingDao = ctx.getBean("sightingDao", SightingDao.class);
     }
     
     @BeforeClass
@@ -50,12 +61,25 @@ public class LocationDaoTest {
     public void setUp() {        
         /* Delete all existing Superpower database rows, if any, and initialize
         values for the testPower. */
-        dao = ctx.getBean("locationDao", LocationDao.class);
-        orgService = ctx.getBean("organizationService", OrganizationService.class);
 
-        List<Organization> orgs = orgService.getAllOrganizations();
+        List<Organization> orgs = orgDao.getAllOrganizations();
         for (Organization org : orgs) {
-            orgService.deleteOrganization(org.getOrganizationId());
+            orgDao.deleteOrganization(org.getOrganizationId());
+        }
+        
+        List<Superpower> superpowers = powerDao.getAllSuperpowers();
+        for (Superpower currentPower : superpowers) {
+            powerDao.deleteSuperpower(currentPower.getSuperpowerId());
+        }
+                
+        List<Superhuman> heroes = heroDao.getAllSuperhumans();
+        for (Superhuman hero : heroes) {
+            heroDao.deleteSuperhuman(hero.getSuperhumanId());
+        }
+        
+        List<Sighting> sightings = sightingDao.getAllSightings();
+        for (Sighting sighting : sightings) {
+            sightingDao.deleteSighting(sighting.getSightingId());
         }
         
         List<Location> locations = dao.getAllLocations();
@@ -166,20 +190,13 @@ public class LocationDaoTest {
     }
 
     /**
-     * Test of getLocationsBySuperhumanId method, of class LocationDao.
-     */
-    @Test
-    public void testGetLocationsBySuperhumanId() throws Exception {
-    }
-
-    /**
      * Test of getLocationByOrganizationId method, of class LocationDao.
      */
     @Test
     public void testGetLocationByOrganizationId() throws Exception {
         dao.addLocation(testLoc);
         testOrg.setLocation(testLoc);
-        orgService.addOrganization(testOrg);
+        orgDao.addOrganization(testOrg);
         
         Location fromDao = dao.getLocationByOrganizationId(testOrg.getOrganizationId());
         assertEquals(fromDao.getLocationName(), testLoc.getLocationName());
@@ -190,5 +207,47 @@ public class LocationDaoTest {
      */
     @Test
     public void testGetLocationBySightingId() throws Exception {
+        LocalDate testDate = LocalDate.of(2020,1,1);
+        Superhuman testHero = new Superhuman();
+        Superpower testPower = new Superpower();
+        Sighting testSighting = new Sighting();
+        testPower.setSuperpowerDescription("Super coding power");
+        testHero.setAlterEgo("Supercoder");
+        testHero.setDescription("World's most powerful coder.");
+        testHero.setVillain(false);
+        testLoc.setLocationName("Test Place");
+        testLoc.setLocationDescription("HQ for the League of Superdevs");
+        testLoc.setStreet("123 main st.");
+        testLoc.setCity("Testville");
+        testLoc.setState("CA");
+        testLoc.setZip("98765");
+        testLoc.setCountry("US");
+        testLoc.setLatitude(new BigDecimal("70.000000"));
+        testLoc.setLongitude(new BigDecimal("98.000000"));
+        testOrg.setOrganizationName("League of Extraordinary Devs");
+        testOrg.setOrgDescription("Earth's mightiest devs.");
+        testOrg.setPhone("5555555555");
+        testOrg.setEmail("info@leagueofdevs.com");
+        testOrg.setVillain(false);
+        
+        powerDao.addSuperpower(testPower);
+        dao.addLocation(testLoc);
+        testOrg.setLocation(testLoc);
+        orgDao.addOrganization(testOrg);
+        testHero.setSuperpowers(powerDao.getAllSuperpowers());
+        testHero.setOrganizations(orgDao.getAllOrganizations());
+        heroDao.addSuperhuman(testHero);
+        testSighting.setSightingDate(testDate);
+        testSighting.setLocation(testLoc);
+        List<Superhuman> heroes = heroDao.getAllSuperhumans();
+        testSighting.setHeroes(heroes);
+        sightingDao.addSighting(testSighting);
+        
+        Superhuman fromDao = heroDao.getSuperhumanById(testHero.getSuperhumanId());
+        assertEquals(fromDao.getAlterEgo(), testHero.getAlterEgo());
+        
+        Location testSightingLoc = dao.getLocationBySightingId(testSighting.getSightingId());
+        assertEquals(testSightingLoc.getLocationId(), testLoc.getLocationId());
+        assertEquals(testSightingLoc.getLocationName(), testLoc.getLocationName());
     }
 }

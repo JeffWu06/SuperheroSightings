@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="18" failures="0" name="com.sg.superherosightings.service.OrganizationServiceTest" time="3.665" errors="0" skipped="0">
+<testsuite tests="18" failures="0" name="com.sg.superherosightings.service.OrganizationServiceTest" time="0.001" errors="0" skipped="0">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk1.8.0_111\jre\bin"/>
     <property name="java.vm.version" value="25.111-b14"/>
     <property name="java.vm.vendor" value="Oracle Corporation"/>
-    <property name="maven.multiModuleProjectDirectory" value="C:\Users\Jeff\Documents\Repos\online-java-2019-JeffWu06\Summatives\SuperHeroSightings"/>
+    <property name="maven.multiModuleProjectDirectory" value="C:\Users\Jeff\Documents\Repos\SuperHeroSightings"/>
     <property name="java.vendor.url" value="http://java.oracle.com/"/>
     <property name="path.separator" value=";"/>
     <property name="guice.disable.misplaced.annotation.check" value="true"/>
@@ -16,7 +16,7 @@
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="sun.os.patch.level" value=""/>
     <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
-    <property name="user.dir" value="C:\Users\Jeff\Documents\Repos\online-java-2019-JeffWu06\Summatives\SuperHeroSightings"/>
+    <property name="user.dir" value="C:\Users\Jeff\Documents\Repos\SuperHeroSightings"/>
     <property name="java.runtime.version" value="1.8.0_111-b14"/>
     <property name="java.awt.graphicsenv" value="sun.awt.Win32GraphicsEnvironment"/>
     <property name="java.endorsed.dirs" value="C:\Program Files\Java\jdk1.8.0_111\jre\lib\endorsed"/>
@@ -64,22 +64,22 @@
     <property name="sun.desktop" value="windows"/>
     <property name="sun.cpu.isalist" value="amd64"/>
   </properties>
-  <testcase classname="com.sg.superherosightings.service.OrganizationServiceTest" name="testUpdateOrganizationInvalidEmail" time="0.224"/>
-  <testcase classname="com.sg.superherosightings.service.OrganizationServiceTest" name="testUpdateOrganizationInvalidPhone" time="0.192"/>
-  <testcase classname="com.sg.superherosightings.service.OrganizationServiceTest" name="testDeleteOrganization" time="0.171"/>
-  <testcase classname="com.sg.superherosightings.service.OrganizationServiceTest" name="testGetAllOrganizations" time="0.15"/>
-  <testcase classname="com.sg.superherosightings.service.OrganizationServiceTest" name="testAddGetValidOrganization" time="0.223"/>
-  <testcase classname="com.sg.superherosightings.service.OrganizationServiceTest" name="testAddGetOrganizationTooLongEmail" time="0.198"/>
-  <testcase classname="com.sg.superherosightings.service.OrganizationServiceTest" name="testAddGetOrganizationTooLongPhone" time="0.215"/>
-  <testcase classname="com.sg.superherosightings.service.OrganizationServiceTest" name="testUpdateOrganizationInvalidDesc" time="0.211"/>
-  <testcase classname="com.sg.superherosightings.service.OrganizationServiceTest" name="testAddGetOrganizationNoLocation" time="0.213"/>
-  <testcase classname="com.sg.superherosightings.service.OrganizationServiceTest" name="testUpdateOrganizationInValidLocation" time="0.219"/>
-  <testcase classname="com.sg.superherosightings.service.OrganizationServiceTest" name="testUpdateOrganizationValidOrg" time="0.182"/>
-  <testcase classname="com.sg.superherosightings.service.OrganizationServiceTest" name="testGetOrganizationsBySuperhumanId" time="0.207"/>
-  <testcase classname="com.sg.superherosightings.service.OrganizationServiceTest" name="testUpdateOrganizationInValidName" time="0.2"/>
-  <testcase classname="com.sg.superherosightings.service.OrganizationServiceTest" name="testAddGetOrganizationNoDesc" time="0.392"/>
-  <testcase classname="com.sg.superherosightings.service.OrganizationServiceTest" name="testAddGetOrganizationNoName" time="0.148"/>
-  <testcase classname="com.sg.superherosightings.service.OrganizationServiceTest" name="testAddGetOrganizationInvalidEmail" time="0.175"/>
-  <testcase classname="com.sg.superherosightings.service.OrganizationServiceTest" name="testAddGetOrganizationTooLongDesc" time="0.165"/>
-  <testcase classname="com.sg.superherosightings.service.OrganizationServiceTest" name="testAddGetOrganizationTooLongName" time="0.18"/>
+  <testcase classname="com.sg.superherosightings.service.OrganizationServiceTest" name="testUpdateOrganizationInvalidEmail" time="0"/>
+  <testcase classname="com.sg.superherosightings.service.OrganizationServiceTest" name="testUpdateOrganizationInvalidPhone" time="0"/>
+  <testcase classname="com.sg.superherosightings.service.OrganizationServiceTest" name="testDeleteOrganization" time="0"/>
+  <testcase classname="com.sg.superherosightings.service.OrganizationServiceTest" name="testGetAllOrganizations" time="0"/>
+  <testcase classname="com.sg.superherosightings.service.OrganizationServiceTest" name="testAddGetValidOrganization" time="0"/>
+  <testcase classname="com.sg.superherosightings.service.OrganizationServiceTest" name="testAddGetOrganizationTooLongEmail" time="0"/>
+  <testcase classname="com.sg.superherosightings.service.OrganizationServiceTest" name="testAddGetOrganizationTooLongPhone" time="0"/>
+  <testcase classname="com.sg.superherosightings.service.OrganizationServiceTest" name="testUpdateOrganizationInvalidDesc" time="0"/>
+  <testcase classname="com.sg.superherosightings.service.OrganizationServiceTest" name="testAddGetOrganizationNoLocation" time="0"/>
+  <testcase classname="com.sg.superherosightings.service.OrganizationServiceTest" name="testUpdateOrganizationInValidLocation" time="0"/>
+  <testcase classname="com.sg.superherosightings.service.OrganizationServiceTest" name="testUpdateOrganizationValidOrg" time="0"/>
+  <testcase classname="com.sg.superherosightings.service.OrganizationServiceTest" name="testGetOrganizationsBySuperhumanId" time="0"/>
+  <testcase classname="com.sg.superherosightings.service.OrganizationServiceTest" name="testUpdateOrganizationInValidName" time="0"/>
+  <testcase classname="com.sg.superherosightings.service.OrganizationServiceTest" name="testAddGetOrganizationNoDesc" time="0"/>
+  <testcase classname="com.sg.superherosightings.service.OrganizationServiceTest" name="testAddGetOrganizationNoName" time="0"/>
+  <testcase classname="com.sg.superherosightings.service.OrganizationServiceTest" name="testAddGetOrganizationInvalidEmail" time="0.001"/>
+  <testcase classname="com.sg.superherosightings.service.OrganizationServiceTest" name="testAddGetOrganizationTooLongDesc" time="0"/>
+  <testcase classname="com.sg.superherosightings.service.OrganizationServiceTest" name="testAddGetOrganizationTooLongName" time="0"/>
 </testsuite>

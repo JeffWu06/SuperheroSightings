@@ -34,6 +34,9 @@ public class LocationServiceTest {
     Organization testOrg = new Organization();
     
     public LocationServiceTest() {
+        ApplicationContext ctx = new ClassPathXmlApplicationContext("test-applicationContext.xml");
+        service = ctx.getBean("locationService", LocationService.class);
+        orgService = ctx.getBean("organizationService", OrganizationService.class);
     }
     
     @BeforeClass
@@ -46,10 +49,6 @@ public class LocationServiceTest {
     
     @Before
     public void setUp() {
-        ApplicationContext ctx = new ClassPathXmlApplicationContext("test-applicationContext.xml");
-        service = ctx.getBean("locationService", LocationService.class);
-        orgService = ctx.getBean("organizationService", OrganizationService.class);
-        
         validLoc.setLocationName("Coder's Lair");
         validLoc.setLocationDescription("Where supercoders converge");
         validLoc.setStreet("123 test rd");
@@ -330,33 +329,4 @@ public class LocationServiceTest {
         List<Location> fromDao = service.getAllLocations();
         assertEquals(1, fromDao.size());
     }
-
-    /**
-     * Test of getLocationsBySuperhumanId method, of class LocationService.
-     */
-    @Test
-    public void testGetLocationsBySuperhumanId() {
-    }
-
-    /**
-     * Test of getLocationByOrganizationId method, of class LocationService.
-     */
-    @Test
-    public void testGetLocationByOrganizationId() throws Exception {
-        service.addLocation(validLoc);
-        testOrg.setLocation(validLoc);
-        orgService.addOrganization(testOrg);
-        
-        Location fromDao = service.getLocationByOrganizationId(testOrg.getOrganizationId());
-        assertNotNull(fromDao);
-        assertEquals(fromDao.getLocationName(), validLoc.getLocationName());
-    }
-
-    /**
-     * Test of getLocationBySightingId method, of class LocationService.
-     */
-    @Test
-    public void testGetLocationBySightingId() {
-    }
-    
 }

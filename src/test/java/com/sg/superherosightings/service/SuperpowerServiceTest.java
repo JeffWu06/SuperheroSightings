@@ -29,6 +29,8 @@ public class SuperpowerServiceTest {
     Superpower invalidPower = new Superpower();
     
     public SuperpowerServiceTest() {
+        ApplicationContext ctx = new ClassPathXmlApplicationContext("test-applicationContext.xml");
+        service = ctx.getBean("superpowerService", SuperpowerService.class);
     }
     
     @BeforeClass
@@ -41,9 +43,6 @@ public class SuperpowerServiceTest {
     
     @Before
     public void setUp() {
-        ApplicationContext ctx = new ClassPathXmlApplicationContext("test-applicationContext.xml");
-        service = ctx.getBean("superpowerService", SuperpowerService.class);
-        
         validPower.setSuperpowerDescription("Okay power");
         
         List<Superpower> superpowers = service.getAllSuperpowers();
