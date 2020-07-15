@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="7" failures="0" name="com.sg.superherosightings.dao.OrganizationDaoTest" time="0.259" errors="0" skipped="0">
+<testsuite tests="7" failures="0" name="com.sg.superherosightings.dao.OrganizationDaoTest" time="1.393" errors="0" skipped="0">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk1.8.0_111\jre\bin"/>
@@ -64,11 +64,11 @@
     <property name="sun.desktop" value="windows"/>
     <property name="sun.cpu.isalist" value="amd64"/>
   </properties>
-  <testcase classname="com.sg.superherosightings.dao.OrganizationDaoTest" name="testDeleteOrganization" time="0.053"/>
-  <testcase classname="com.sg.superherosightings.dao.OrganizationDaoTest" name="testGetAllOrganizations" time="0.036"/>
-  <testcase classname="com.sg.superherosightings.dao.OrganizationDaoTest" name="testUpdateOrganization" time="0.039"/>
-  <testcase classname="com.sg.superherosightings.dao.OrganizationDaoTest" name="testGetOrganizationsAtLocation" time="0.031"/>
-  <testcase classname="com.sg.superherosightings.dao.OrganizationDaoTest" name="testAddGetOrganizationNoLocation" time="0.02"/>
-  <testcase classname="com.sg.superherosightings.dao.OrganizationDaoTest" name="testAddGetOrganization" time="0.036"/>
-  <testcase classname="com.sg.superherosightings.dao.OrganizationDaoTest" name="testGetOrganizationsBySuperhumanId" time="0.044"/>
+  <testcase classname="com.sg.superherosightings.dao.OrganizationDaoTest" name="testDeleteOrganization" time="0.199"/>
+  <testcase classname="com.sg.superherosightings.dao.OrganizationDaoTest" name="testGetAllOrganizations" time="0.218"/>
+  <testcase classname="com.sg.superherosightings.dao.OrganizationDaoTest" name="testUpdateOrganization" time="0.18"/>
+  <testcase classname="com.sg.superherosightings.dao.OrganizationDaoTest" name="testGetOrganizationsAtLocation" time="0.19"/>
+  <testcase classname="com.sg.superherosightings.dao.OrganizationDaoTest" name="testAddGetOrganizationNoLocation" time="0.211"/>
+  <testcase classname="com.sg.superherosightings.dao.OrganizationDaoTest" name="testAddGetOrganization" time="0.186"/>
+  <testcase classname="com.sg.superherosightings.dao.OrganizationDaoTest" name="testGetOrganizationsBySuperhumanId" time="0.209"/>
 </testsuite>

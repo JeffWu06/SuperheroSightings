@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="12" failures="0" name="com.sg.superherosightings.service.SightingServiceTest" time="0" errors="0" skipped="0">
+<testsuite tests="12" failures="0" name="com.sg.superherosightings.service.SightingServiceTest" time="0.002" errors="0" skipped="0">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk1.8.0_111\jre\bin"/>
@@ -69,10 +69,10 @@
   <testcase classname="com.sg.superherosightings.service.SightingServiceTest" name="testGetAllSightings" time="0"/>
   <testcase classname="com.sg.superherosightings.service.SightingServiceTest" name="testUpdateSightingBadDate" time="0"/>
   <testcase classname="com.sg.superherosightings.service.SightingServiceTest" name="testGetSightingsByDate" time="0"/>
-  <testcase classname="com.sg.superherosightings.service.SightingServiceTest" name="testAddGetSightingValid" time="0"/>
+  <testcase classname="com.sg.superherosightings.service.SightingServiceTest" name="testAddGetSightingValid" time="0.001"/>
   <testcase classname="com.sg.superherosightings.service.SightingServiceTest" name="testAddGetSightingNoHeroesList" time="0"/>
   <testcase classname="com.sg.superherosightings.service.SightingServiceTest" name="testAddGetSightingNoDate" time="0"/>
-  <testcase classname="com.sg.superherosightings.service.SightingServiceTest" name="testGetRecentSightings" time="0"/>
+  <testcase classname="com.sg.superherosightings.service.SightingServiceTest" name="testGetRecentSightings" time="0.001"/>
   <testcase classname="com.sg.superherosightings.service.SightingServiceTest" name="testUpdateSightingValid" time="0"/>
   <testcase classname="com.sg.superherosightings.service.SightingServiceTest" name="testDeleteSighting" time="0"/>
   <testcase classname="com.sg.superherosightings.service.SightingServiceTest" name="testUpdateSightingNoHeroes" time="0"/>

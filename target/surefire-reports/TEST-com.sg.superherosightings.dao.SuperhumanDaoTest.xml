@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="8" failures="0" name="com.sg.superherosightings.dao.SuperhumanDaoTest" time="0.612" errors="0" skipped="0">
+<testsuite tests="8" failures="0" name="com.sg.superherosightings.dao.SuperhumanDaoTest" time="1.697" errors="0" skipped="0">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk1.8.0_111\jre\bin"/>
@@ -64,12 +64,12 @@
     <property name="sun.desktop" value="windows"/>
     <property name="sun.cpu.isalist" value="amd64"/>
   </properties>
-  <testcase classname="com.sg.superherosightings.dao.SuperhumanDaoTest" name="testAddGetSuperhumanById" time="0.034"/>
-  <testcase classname="com.sg.superherosightings.dao.SuperhumanDaoTest" name="testGetSuperhumansByLocationId" time="0.048"/>
-  <testcase classname="com.sg.superherosightings.dao.SuperhumanDaoTest" name="testGetAllSuperhumans" time="0.095"/>
-  <testcase classname="com.sg.superherosightings.dao.SuperhumanDaoTest" name="testDeleteSuperhuman" time="0.152"/>
-  <testcase classname="com.sg.superherosightings.dao.SuperhumanDaoTest" name="testGetSuperhumanBySightingId" time="0.058"/>
-  <testcase classname="com.sg.superherosightings.dao.SuperhumanDaoTest" name="testUpdateSuperhuman" time="0.068"/>
-  <testcase classname="com.sg.superherosightings.dao.SuperhumanDaoTest" name="testGetSuperhumanIdsUsingPower" time="0.061"/>
-  <testcase classname="com.sg.superherosightings.dao.SuperhumanDaoTest" name="testGetSuperhumansByOrganization" time="0.096"/>
+  <testcase classname="com.sg.superherosightings.dao.SuperhumanDaoTest" name="testAddGetSuperhumanById" time="0.205"/>
+  <testcase classname="com.sg.superherosightings.dao.SuperhumanDaoTest" name="testGetSuperhumansByLocationId" time="0.238"/>
+  <testcase classname="com.sg.superherosightings.dao.SuperhumanDaoTest" name="testGetAllSuperhumans" time="0.233"/>
+  <testcase classname="com.sg.superherosightings.dao.SuperhumanDaoTest" name="testDeleteSuperhuman" time="0.175"/>
+  <testcase classname="com.sg.superherosightings.dao.SuperhumanDaoTest" name="testGetSuperhumanBySightingId" time="0.2"/>
+  <testcase classname="com.sg.superherosightings.dao.SuperhumanDaoTest" name="testUpdateSuperhuman" time="0.199"/>
+  <testcase classname="com.sg.superherosightings.dao.SuperhumanDaoTest" name="testGetSuperhumanIdsUsingPower" time="0.238"/>
+  <testcase classname="com.sg.superherosightings.dao.SuperhumanDaoTest" name="testGetSuperhumansByOrganization" time="0.209"/>
 </testsuite>
