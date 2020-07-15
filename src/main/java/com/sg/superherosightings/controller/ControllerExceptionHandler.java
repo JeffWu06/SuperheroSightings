@@ -15,9 +15,9 @@ import com.sg.superherosightings.service.SuperhumanInUseException;
 import com.sg.superherosightings.service.SuperhumanInvalidDataException;
 import com.sg.superherosightings.service.SuperpowerInUseException;
 import com.sg.superherosightings.service.SuperpowerInvalidDataException;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.servlet.ModelAndView;
 
 /**
  *
@@ -33,13 +33,11 @@ public class ControllerExceptionHandler {
             OrganizationInUseException.class, SightingInvalidDataException.class,
             SightingInUseException.class, NullPointerException.class, 
             IllegalStateException.class})
-    public /*ModelAndView*/ String processInvalidDataAndInUseExceptions(
-            Exception e, Model model) {
-//        ModelAndView model = new ModelAndView();
-//        model.addObject("errorMessages", e.getMessage());
-//        model.setViewName("superheroes");
-//        return model;
-        model.addAttribute("errorMessages", e.getMessage());
-        return "error";
+    public ModelAndView processInvalidDataAndInUseExceptions(
+            Exception e) {
+        ModelAndView model = new ModelAndView();
+        model.addObject("errorMessages", e.getMessage());
+        model.setViewName("error");
+        return model;
     }
 }

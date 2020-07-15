@@ -236,6 +236,7 @@ public class SuperheroSightingsController {
     }
     
     @RequestMapping(value="/superpower/{id}", method=RequestMethod.DELETE)
+    @ResponseStatus(HttpStatus.NO_CONTENT)
     public String deleteSuperpower(@PathVariable("id") int superpowerId) 
             throws SuperpowerInUseException {
         service.deleteSuperpower(superpowerId);
@@ -309,6 +310,7 @@ public class SuperheroSightingsController {
     }
     
     @RequestMapping(value="/location/{id}", method=RequestMethod.DELETE)
+    @ResponseStatus(HttpStatus.NO_CONTENT)
     public String deleteLocation(@PathVariable("id") long locationId) 
             throws LocationInUseException {
         service.deleteLocation(locationId);
@@ -405,6 +407,7 @@ public class SuperheroSightingsController {
     }
     
     @RequestMapping(value="/organization/{id}", method=RequestMethod.DELETE)
+    @ResponseStatus(HttpStatus.NO_CONTENT)
     public String deleteOrganization(@PathVariable("id") int organizationId) 
             throws OrganizationInUseException {
         service.deleteOrganization(organizationId);
@@ -496,6 +499,7 @@ public class SuperheroSightingsController {
     }
     
     @RequestMapping(value="/sighting/{id}", method=RequestMethod.DELETE)
+    @ResponseStatus(HttpStatus.NO_CONTENT)
     public String deleteSighting(@PathVariable("id") long sightingId) 
             throws SightingInUseException {
         service.deleteSighting(sightingId);
