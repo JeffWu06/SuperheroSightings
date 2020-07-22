@@ -62,11 +62,22 @@ alter table Organization
 add constraint fk_Organization_Location foreign key(LocationID) references Location(LocationID)
 on delete no action;
 
+/*Begin add Picture functionality.*/
+create table if not exists Picture
+	(
+    PictureId bigint not null,
+    Title varchar(40) not null,
+    Filename varchar(70) not null,
+    primary key(PictureId)
+    );
+/* End add picture functionality.*/
+
 create table if not exists Sighting
 	(
     SightingID bigint not null auto_increment,
     SightingDate date not null,
     LocationID bigint not null,
+    PictureId bigint null, /*To link picture*/
     primary key(SightingID)
     )ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1;
     
@@ -99,3 +110,5 @@ add constraint fk_SuperhumanOrganization_Superhuman foreign key(SuperhumanID) re
 on delete no action,
 add constraint fk_SuperhumanOrganization_Organization foreign key(OrganizationID) references Organization(OrganizationID)
 on delete no action;
+    
+    

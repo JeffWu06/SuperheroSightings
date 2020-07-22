@@ -78,6 +78,10 @@
     <bean id="sightingService" class="com.sg.superherosightings.service.SightingServiceImpl">
         <constructor-arg ref="sightingDao"/>
     </bean>
+    
+    <bean id="pictureDao" class="com.sg.superherosightings.dao.PictureDaoJdbcImpl">
+        <property name="jdbcTemplate" ref="jdbcTemplate"/>
+    </bean>
 
     <bean id="superHeroSightingService" class="com.sg.superherosightings.service.SuperHeroSightingsServiceImpl">
         <constructor-arg ref="sightingService"/>
