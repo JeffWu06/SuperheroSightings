@@ -442,4 +442,11 @@ $RECYCLE.BIN/
 # Windows shortcuts
 *.lnk
 
-/target/
+/target/classes/com/
+/target/classes/com/.netbeans_automatic_build
+/target/generated-sources/
+/target/surefire-reports/
+/target/test-classes/com/
+/target/test-classes/com/.netbeans_automatic_build
+
+
