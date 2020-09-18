@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+              xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+                           http://www.springframework.org/schema/beans/spring-beans.xsd
+                           http://www.springframework.org/schema/mvc
+                           http://www.springframework.org/schema/mvc/spring-mvc.xsd
+                           http://www.springframework.org/schema/tx 
+                           http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
+                           http://www.springframework.org/schema/context
+                           http://www.springframework.org/schema/context/spring-context.xsd
+       http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.2.xsd" xmlns:mvc="http://www.springframework.org/schema/mvc"> 
+
+    <!-- Bean definitions go here -->
+    <tx:annotation-driven/>
+    
+    <context:component-scan base-package="com.sg.superherosightings.dao" />
+    <bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource">
+        <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+        <property name="url" value="jdbc:mysql://localhost:3306/superherosightings"/>
+        <property name="username" value="root"/>
+        <property name="password" value="root"/>
+        <property name="initialSize" value="5"/>
+        <property name="maxTotal" value="1000"/>
+    </bean>
+    
+    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+    
+    <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+    
+<!--    <bean id="superHeroSightingsDao" class="com.sg.superherosightings.dao.SuperHeroSightingsJdbcTemplateImpl">
+        <property name="jdbcTemplate" ref="jdbcTemplate"/>
+    </bean>-->
+    
+    <bean id="superpowerDao" class="com.sg.superherosightings.dao.SuperpowerDaoJdbcImpl">
+        <property name="jdbcTemplate" ref="jdbcTemplate"/>
+    </bean>
+    
+    <bean id="superpowerService" class="com.sg.superherosightings.service.SuperpowerServiceImpl">
+        <constructor-arg ref="superpowerDao"/>
+    </bean>
+    
+    <bean id="locationDao" class="com.sg.superherosightings.dao.LocationDaoJdbcImpl">
+        <property name="jdbcTemplate" ref="jdbcTemplate"/>
+    </bean>
+    
+    <bean id="locationService" class="com.sg.superherosightings.service.LocationServiceImpl">
+        <constructor-arg ref="locationDao"/>
+    </bean>
+    
+    <bean id="organizationDao" class="com.sg.superherosightings.dao.OrganizationDaoJdbcImpl">
+        <property name="jdbcTemplate" ref="jdbcTemplate"/>
+    </bean>
+    
+    <bean id="organizationService" class="com.sg.superherosightings.service.OrganizationServiceImpl">
+        <constructor-arg ref="organizationDao"/>
+    </bean>
+    
+    <bean id="superhumanDao" class="com.sg.superherosightings.dao.SuperhumanDaoJdbcImpl">
+        <property name="jdbcTemplate" ref="jdbcTemplate"/>
+    </bean>
+    
+    <bean id="superhumanService" class="com.sg.superherosightings.service.SuperhumanServiceImpl">
+        <constructor-arg ref="superhumanDao"/>
+    </bean>
+    
+    <bean id="sightingDao" class="com.sg.superherosightings.dao.SightingDaoJdbcImpl">
+        <property name="jdbcTemplate" ref="jdbcTemplate"/>
+    </bean>    
+    
+    <bean id="sightingService" class="com.sg.superherosightings.service.SightingServiceImpl">
+        <constructor-arg ref="sightingDao"/>
+    </bean>
+    
+    <bean id="pictureDao" class="com.sg.superherosightings.dao.PictureDaoJdbcImpl">
+        <property name="jdbcTemplate" ref="jdbcTemplate"/>
+    </bean>
+
+    <bean id="superHeroSightingService" class="com.sg.superherosightings.service.SuperHeroSightingsServiceImpl">
+        <constructor-arg ref="sightingService"/>
+        <constructor-arg ref="superhumanService"/>
+        <constructor-arg ref="superpowerService"/>
+        <constructor-arg ref="locationService"/>
+        <constructor-arg ref="organizationService"/>
+    </bean>
+    
+</beans>
